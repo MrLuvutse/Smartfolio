@@ -24,13 +24,6 @@ export default function Contact() {
     { icon: '📍', label: 'Location', value: 'Nairobi, Kenya',                 href: null                           },
   ];
 
-  const inputStyle = {
-    width: '100%', padding: '10px 14px',
-    background: 'var(--bg-3)', border: '1px solid var(--border)',
-    borderRadius: '8px', color: '#f0f0ff', fontSize: '14px',
-    outline: 'none', fontFamily: 'inherit',
-  };
-
   return (
     <section id="contact" className="section" style={{ background: 'var(--bg-2)' }}>
       <div className="container">
@@ -39,6 +32,7 @@ export default function Contact() {
         <p className="section-sub">Have a project or want to hire me? Let's talk!</p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '48px' }}>
+
           <div>
             <h3 style={{ fontSize: '22px', fontWeight: 700, marginBottom: '24px' }}>Get In Touch</h3>
             <p style={{ color: '#8888aa', fontSize: '15px', lineHeight: 1.8, marginBottom: '32px' }}>
@@ -70,20 +64,38 @@ export default function Contact() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '14px' }}>
                 <div>
                   <label style={{ fontSize: '13px', color: '#8888aa', display: 'block', marginBottom: '6px' }}>Name</label>
-                  <input name="name" value={form.name} onChange={handleChange} placeholder="John Doe" required style={inputStyle} />
+                  <input
+                    name="name" value={form.name} onChange={handleChange}
+                    placeholder="John Doe" required
+                    style={{ width: '100%', padding: '10px 14px', background: 'var(--bg-3)', border: '1px solid var(--border)', borderRadius: '8px', color: '#f0f0ff', fontSize: '14px', outline: 'none', fontFamily: 'inherit' }}
+                  />
                 </div>
                 <div>
                   <label style={{ fontSize: '13px', color: '#8888aa', display: 'block', marginBottom: '6px' }}>Email</label>
-                  <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="john@example.com" required style={inputStyle} />
+                  <input
+                    name="email" type="email" value={form.email} onChange={handleChange}
+                    placeholder="john@example.com" required
+                    style={{ width: '100%', padding: '10px 14px', background: 'var(--bg-3)', border: '1px solid var(--border)', borderRadius: '8px', color: '#f0f0ff', fontSize: '14px', outline: 'none', fontFamily: 'inherit' }}
+                  />
                 </div>
               </div>
+
               <div style={{ marginBottom: '14px' }}>
                 <label style={{ fontSize: '13px', color: '#8888aa', display: 'block', marginBottom: '6px' }}>Subject</label>
-                <input name="subject" value={form.subject} onChange={handleChange} placeholder="Job opportunity / Project inquiry" required style={inputStyle} />
+                <input
+                  name="subject" value={form.subject} onChange={handleChange}
+                  placeholder="Job opportunity / Project inquiry" required
+                  style={{ width: '100%', padding: '10px 14px', background: 'var(--bg-3)', border: '1px solid var(--border)', borderRadius: '8px', color: '#f0f0ff', fontSize: '14px', outline: 'none', fontFamily: 'inherit' }}
+                />
               </div>
+
               <div style={{ marginBottom: '20px' }}>
                 <label style={{ fontSize: '13px', color: '#8888aa', display: 'block', marginBottom: '6px' }}>Message</label>
-                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Tell me about your project..." required rows={5} style={{ ...inputStyle, resize: 'vertical' }} />
+                <textarea
+                  name="message" value={form.message} onChange={handleChange}
+                  placeholder="Tell me about your project..." required rows={5}
+                  style={{ width: '100%', padding: '10px 14px', background: 'var(--bg-3)', border: '1px solid var(--border)', borderRadius: '8px', color: '#f0f0ff', fontSize: '14px', outline: 'none', fontFamily: 'inherit', resize: 'vertical' }}
+                />
               </div>
 
               {status === 'success' && (
