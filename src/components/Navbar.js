@@ -18,13 +18,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = [
-    { id: 'home',     label: 'Home'     },
-    { id: 'about',    label: 'About'    },
-    { id: 'skills',   label: 'Skills'   },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact',  label: 'Contact'  },
-  ];
+ const links = [
+  { id: 'home',         label: 'Home'         },
+  { id: 'about',        label: 'About'        },
+  { id: 'services',     label: 'Services'     },
+  { id: 'skills',       label: 'Skills'       },
+  { id: 'projects',     label: 'Projects'     },
+  { id: 'blog',         label: 'Blog'         },
+  { id: 'contact',      label: 'Contact'      },
+];
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
