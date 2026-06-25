@@ -214,3 +214,162 @@ a:hover { color: var(--primary-d); }
   z-index: 999;
 }
 .scroll-top:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(108,99,255,0.5); }
+/* ============================================
+   IMPROVEMENTS
+   ============================================ */
+
+/* ---- Glassmorphism cards ---- */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+}
+
+/* ---- Gradient background ---- */
+.gradient-bg {
+  background: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #0d0d1a 100%);
+}
+
+/* ---- Scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---- Loading screen ---- */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+.loading-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(108,99,255,0.2);
+  border-top-color: #6c63ff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Timeline ---- */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #6c63ff, #ff6584);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 36px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -38px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #6c63ff;
+  border: 2px solid #0a0a0f;
+  box-shadow: 0 0 12px rgba(108,99,255,0.6);
+}
+
+/* ---- Fun facts ---- */
+.fun-fact-card {
+  text-align: center;
+  padding: 28px 20px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+.fun-fact-card:hover {
+  transform: translateY(-6px) rotate(1deg);
+  border-color: rgba(108,99,255,0.4);
+  box-shadow: 0 12px 32px rgba(108,99,255,0.15);
+}
+
+/* ---- Better buttons ---- */
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(108,99,255,0.45);
+}
+.btn-outline:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(108,99,255,0.2);
+}
+
+/* ---- Certifications ---- */
+.cert-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+.cert-card:hover {
+  border-color: rgba(108,99,255,0.4);
+  transform: translateX(6px);
+}
+
+/* ---- Mobile improvements ---- */
+@media (max-width: 768px) {
+  .section { padding: 60px 0; }
+  .container { padding: 0 16px; }
+  .section-title { font-size: 26px; }
+  .section-sub { font-size: 15px; margin-bottom: 40px; }
+  .card { padding: 20px; }
+  .btn { padding: 10px 20px; font-size: 14px; }
+  .timeline { padding-left: 24px; }
+  .timeline-item::before { left: -30px; }
+}
