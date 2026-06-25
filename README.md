@@ -3,7 +3,7 @@
 A modern, responsive portfolio website built with React.
 
 ## 🌐 Live Demo
-👉 [View Live Portfolio](https://smartfolio-xxxxx.vercel.app)
+👉 [View Live Portfolio](https://smartfolio-git-master-leslieluvutses-projects.vercel.app)
 
 ## ✨ Features
 - 🎨 Dark themed with particle animations
