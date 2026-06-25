@@ -37,7 +37,7 @@ const PROJECTS = [
 ];
 
 export default function Projects() {
-  const [hovered, setHovered] = useState(null);
+  const [, setHovered] = useState(null);
 
   return (
     <section id="projects" className="section">
