@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
+
+// 🔑 Replace these with the values from your EmailJS dashboard
+const EMAILJS_SERVICE_ID  = 'service_ccd1w1x';
+const EMAILJS_TEMPLATE_ID = 'template_82a8yje';
+const EMAILJS_PUBLIC_KEY  = 'TltP5um6oUPlJoEx9';
 
 export default function Contact() {
   const [form,    setForm]    = useState({ name: '', email: '', subject: '', message: '' });
-  const [status,  setStatus]  = useState('');
+  const [status,  setStatus]  = useState(''); // '', 'success', 'error'
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -10,11 +16,29 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1500));
-    setStatus('success');
-    setLoading(false);
-    setForm({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setStatus(''), 4000);
+    setStatus('');
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          subject: form.subject,
+          message: form.message,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      setStatus('success');
+      setForm({ name: '', email: '', subject: '', message: '' });
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setStatus('error');
+    } finally {
+      setLoading(false);
+      setTimeout(() => setStatus(''), 5000);
+    }
   };
 
   const contacts = [
@@ -101,6 +125,12 @@ export default function Contact() {
               {status === 'success' && (
                 <div style={{ padding: '12px 16px', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: '8px', color: '#22c55e', fontSize: '14px', marginBottom: '16px' }}>
                   ✅ Message sent! I'll get back to you soon.
+                </div>
+              )}
+
+              {status === 'error' && (
+                <div style={{ padding: '12px 16px', background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: '8px', color: '#ef4444', fontSize: '14px', marginBottom: '16px' }}>
+                  ❌ Something went wrong. Please try again or email me directly.
                 </div>
               )}
 
